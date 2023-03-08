@@ -1,5 +1,5 @@
 from flask import Flask
-import flask
+from flask import request
 import db
 
 app = Flask(__name__)
@@ -9,6 +9,19 @@ Database = db.DB()
 @app.route('/users')
 def users():
     return Database.select()
+
+@app.route('/period/')
+def period():
+    val = request.args.get('value')
+    # Database.filterPeriod(value) - 필터 진행 후 Render data에 저장- json형태로 
+    # Database.getRender 
+    # Return 
+    pass
+
+@app.route('/download')
+def download():
+    # 현재 render된 데이터를 csv 형태로 다운로드
+    pass
 
 # Update Table 데이터
 @app.route('/update')
